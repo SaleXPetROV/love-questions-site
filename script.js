@@ -156,4 +156,4 @@ submitButton.addEventListener('click', async () => {
 });
 
 // Инициализация - показываем стартовый экран при загрузке
-// showCurrentQuestion(); // Эту строку убираем 
+// showCurrentQuestion(); // Эту строку убираем
