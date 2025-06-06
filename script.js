@@ -26,11 +26,21 @@ const catAnimations = [
     "images/gif10.jpg",
 ];
 
+// Массив аудиофайлов для плейлиста
+const playlist = [
+    "audio/Ангельские_глаза.mp3",
+    "audio/Расцветай.mp3",
+    "audio/Я_буду.mp3"
+    // Добавьте другие ваши песни здесь
+];
+
 // Конфигурация Telegram бота
 const TELEGRAM_BOT_TOKEN = '7430735534:AAEPh3D-JwKDnNpxRtaHobNI_YJ1_1q5JWw';
 const TELEGRAM_CHAT_ID = '6661676176'; // ID пользователя, которому будут отправляться сообщения
 
 let currentQuestionIndex = 0;
+let currentSongIndex = 0; // Индекс текущей песни в плейлисте
+
 const questionElement = document.getElementById('question');
 const answerInput = document.getElementById('answer');
 const submitButton = document.getElementById('submitBtn');
@@ -40,8 +50,31 @@ const backgroundMusic = document.getElementById('backgroundMusic');
 
 // Элементы для стартового экрана и страницы вопросов
 const startContainer = document.getElementById('startContainer');
-const startButton = document.getElementById('startButton'); // Получаем кнопку
+const startButton = document.getElementById('startButton');
 const questionPage = document.getElementById('questionPage');
+
+// Функция для загрузки и воспроизведения текущей песни
+function playCurrentSong() {
+    if (playlist.length === 0) {
+        console.warn("Плейлист пуст!");
+        return;
+    }
+    backgroundMusic.src = playlist[currentSongIndex];
+    backgroundMusic.play().catch(error => {
+        console.error('Ошибка воспроизведения музыки:', error);
+        // Можно добавить сообщение пользователю, что нужно включить звук
+    });
+}
+
+// Обработчик события окончания песни
+backgroundMusic.addEventListener('ended', () => {
+    currentSongIndex++;
+    if (currentSongIndex >= playlist.length) {
+        currentSongIndex = 0; // Начинаем сначала, если включен loop (атрибут loop у <audio>)
+        // Если не нужен loop, можно просто остановить: backgroundMusic.pause(); return;
+    }
+    playCurrentSong(); // Воспроизводим следующую песню
+});
 
 // Функция для создания падающих сердечек
 function createHearts() {
@@ -113,11 +146,8 @@ startButton.addEventListener('click', () => {
     // Показываем страницу с вопросами
     questionPage.style.display = 'flex'; // Используем flex, как в CSS для центрирования
 
-    // Запускаем музыку
-    backgroundMusic.play().catch(error => {
-        console.error('Ошибка воспроизведения музыки:', error);
-        // Можно добавить сообщение пользователю, что нужно включить звук
-    });
+    // Запускаем воспроизведение первой песни из плейлиста
+    playCurrentSong();
 
     // Показываем первый вопрос
     showCurrentQuestion();
