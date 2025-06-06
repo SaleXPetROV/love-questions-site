@@ -130,22 +130,24 @@ body {
 
 .answer-form {
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
     gap: 10px;
     width: 100%;
 }
 
 .answer-form textarea {
-    width: calc(100% - 10px);
+    flex-grow: 1;
+    width: auto;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1em;
     resize: none;
-    overflow-y: hidden;
+    overflow-y: auto;
     min-height: 40px;
+    max-height: 150px;
 }
 
 input[type="text"] {
@@ -171,6 +173,11 @@ button:hover {
     background-color: #c2185b;
 }
 
+.answer-form button {
+    padding: 10px 20px;
+    flex-shrink: 0;
+}
+
 @media (max-width: 480px) {
     .container, .start-container {
         margin: 10px;
@@ -183,7 +190,7 @@ button:hover {
     .start-container p {
         font-size: 16px;
     }
-     .start-container button {
+    .start-container button {
         font-size: 16px;
         padding: 10px 20px;
     }
