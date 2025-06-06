@@ -40,6 +40,7 @@ const backgroundMusic = document.getElementById('backgroundMusic');
 
 // Элементы для стартового экрана и страницы вопросов
 const startContainer = document.getElementById('startContainer');
+const startButton = document.getElementById('startButton'); // Получаем кнопку
 const questionPage = document.getElementById('questionPage');
 
 // Функция для создания падающих сердечек
@@ -105,11 +106,8 @@ function showCurrentQuestion() {
     updateCatAnimation();
 }
 
-// Обработчик первого клика для запуска
-document.addEventListener('click', function firstClickListener() {
-    // Удаляем этот же обработчик, чтобы он сработал только один раз
-    document.removeEventListener('click', firstClickListener);
-
+// Обработчик нажатия кнопки "Начать"
+startButton.addEventListener('click', () => {
     // Скрываем стартовый экран
     startContainer.style.display = 'none';
     // Показываем страницу с вопросами
@@ -152,7 +150,10 @@ submitButton.addEventListener('click', async () => {
             await sendToTelegram('Все вопросы пройдены! 🎉');
 
             // Останавливаем музыку (опционально)
-            // backgroundMusic.pause();
+            backgroundMusic.pause();
         }
     }
 });
+
+// Инициализация - показываем стартовый экран при загрузке
+// showCurrentQuestion(); // Эту строку убираем
