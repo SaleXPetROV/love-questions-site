@@ -38,11 +38,6 @@ const questionCounter = document.getElementById('questionCounter');
 const catImage = document.querySelector('.cat-animation');
 const backgroundMusic = document.getElementById('backgroundMusic');
 
-// Новые элементы для стартового экрана
-const startContainer = document.getElementById('startContainer');
-const startButton = document.getElementById('startButton');
-const questionPage = document.getElementById('questionPage');
-
 // Функция для создания падающих сердечек
 function createHearts() {
     const heart = document.createElement('div');
@@ -106,23 +101,6 @@ function showCurrentQuestion() {
     updateCatAnimation();
 }
 
-// Обработчик нажатия кнопки "Начать"
-startButton.addEventListener('click', () => {
-    // Скрываем стартовый экран
-    startContainer.style.display = 'none';
-    // Показываем страницу с вопросами
-    questionPage.style.display = 'flex'; // Используем flex, как в CSS для центрирования
-
-    // Запускаем музыку
-    backgroundMusic.play().catch(error => {
-        console.error('Ошибка воспроизведения музыки:', error);
-        // Можно добавить сообщение пользователю, что нужно включить звук
-    });
-
-    // Показываем первый вопрос
-    showCurrentQuestion();
-});
-
 // Обработчик отправки ответа
 submitButton.addEventListener('click', async () => {
     const answer = answerInput.value.trim();
@@ -150,10 +128,16 @@ submitButton.addEventListener('click', async () => {
             await sendToTelegram('Все вопросы пройдены! 🎉');
 
             // Останавливаем музыку (опционально)
-            backgroundMusic.pause();
+            // backgroundMusic.pause();
         }
     }
 });
 
-// Инициализация - показываем стартовый экран при загрузке
-// showCurrentQuestion(); // Эту строку убираем
+// Инициализация - показываем первый вопрос при загрузке
+showCurrentQuestion();
+
+// Запускаем музыку при загрузке страницы (может быть заблокировано браузером)
+backgroundMusic.play().catch(error => {
+    console.error('Ошибка автоматического воспроизведения музыки:', error);
+    // Можно добавить сообщение пользователю, что нужно включить звук
+});
