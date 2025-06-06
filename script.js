@@ -1,6 +1,6 @@
 // Массив вопросов (вы можете заменить их на свои)
 const questions = [
-    "1",
+    "первыйы",
     "2",
     "3",
     "4",
@@ -123,7 +123,7 @@ async function sendToTelegram(message) {
 
 // Функция для обновления счетчика вопросов
 function updateQuestionCounter() {
-    questionCounter.textContent = `Вопрос ${currentQuestionIndex + 1} из ${questions.length}`;
+    questionCounter.textContent = `${currentQuestionIndex + 1} из ${questions.length}`;
 }
 
 // Функция для обновления анимации котика
