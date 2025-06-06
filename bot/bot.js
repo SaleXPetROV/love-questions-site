@@ -24,7 +24,7 @@ bot.onText(/\/start/, (msg) => {
             ]
         };
 
-        bot.sendMessage(chatId, 'Вопросы для тебя ❤️', {
+        bot.sendMessage(chatId, 'Пару вопросов для тебя❤️', {
             reply_markup: keyboard
         });
     }

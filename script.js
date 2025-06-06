@@ -195,14 +195,10 @@ submitButton.addEventListener('click', async () => {
             showCurrentQuestion();
         } else {
             // Все вопросы пройдены
-            questionElement.textContent = "Ты огонь малыш❤️‍🔥";
+            questionElement.textContent = "Спасибо за ответы солнце! 🎉/n Ты как всегда лучшая😘";
             answerInput.style.display = 'none';
             submitButton.style.display = 'none';
             catImage.src = catAnimations[0];
-            
-            // Отправляем финальное сообщение
-            await sendToTelegram('Спасибо за ответы солнце! 🎉<br/> Ты как всегда лучшая😘');
-
             // Останавливаем музыку (опционально)
             // backgroundMusic.pause(); // Закомментировано, чтобы музыка не останавливалась
         }
