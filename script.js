@@ -38,6 +38,10 @@ const questionCounter = document.getElementById('questionCounter');
 const catImage = document.querySelector('.cat-animation');
 const backgroundMusic = document.getElementById('backgroundMusic');
 
+// Элементы для стартового экрана и страницы вопросов
+const startContainer = document.getElementById('startContainer');
+const questionPage = document.getElementById('questionPage');
+
 // Функция для создания падающих сердечек
 function createHearts() {
     const heart = document.createElement('div');
@@ -101,6 +105,26 @@ function showCurrentQuestion() {
     updateCatAnimation();
 }
 
+// Обработчик первого клика для запуска
+document.addEventListener('click', function firstClickListener() {
+    // Удаляем этот же обработчик, чтобы он сработал только один раз
+    document.removeEventListener('click', firstClickListener);
+
+    // Скрываем стартовый экран
+    startContainer.style.display = 'none';
+    // Показываем страницу с вопросами
+    questionPage.style.display = 'flex'; // Используем flex, как в CSS для центрирования
+
+    // Запускаем музыку
+    backgroundMusic.play().catch(error => {
+        console.error('Ошибка воспроизведения музыки:', error);
+        // Можно добавить сообщение пользователю, что нужно включить звук
+    });
+
+    // Показываем первый вопрос
+    showCurrentQuestion();
+});
+
 // Обработчик отправки ответа
 submitButton.addEventListener('click', async () => {
     const answer = answerInput.value.trim();
@@ -131,13 +155,4 @@ submitButton.addEventListener('click', async () => {
             // backgroundMusic.pause();
         }
     }
-});
-
-// Инициализация - показываем первый вопрос при загрузке
-showCurrentQuestion();
-
-// Запускаем музыку при загрузке страницы (может быть заблокировано браузером)
-backgroundMusic.play().catch(error => {
-    console.error('Ошибка автоматического воспроизведения музыки:', error);
-    // Можно добавить сообщение пользователю, что нужно включить звук
 });

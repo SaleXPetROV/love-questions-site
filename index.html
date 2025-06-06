@@ -9,7 +9,7 @@
 <body>
     
     <!-- Элемент для фоновой музыки -->
-    <audio autoplay loop>
+    <audio id="backgroundMusic" loop>
         <source src="audio/Ангельские_глаза.mp3" type="audio/mpeg">
         <source src="audio/Ангельские_глаза.ogg" type="audio/ogg">
         <source src="audio/Расцветай.mp3" type="audio/mpeg">
@@ -20,7 +20,12 @@
         Your browser does not support the audio element.
     </audio>
 
-    <div class="container" id="questionPage">
+    <div class="start-container" id="startContainer">
+        <h2>Привет! ❤️</h2>
+        <p>Нажмите в любом месте экрана, чтобы начать!</p>
+    </div>
+
+    <div class="container" id="questionPage" style="display: none;">
         <div class="progress">
             <span id="questionCounter">Вопрос 1 из 10</span>
         </div>
