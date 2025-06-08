@@ -43,7 +43,10 @@ const playlist = [
     "audio/Ангельские_глаза.mp3",
     "audio/Расцветай.mp3",
     "audio/Я_буду.mp3",
-    // Добавьте другие ваши песни здесь
+    "audio/Не_забывай.mp3",
+    "audio/Избалованная.mp3",
+    "audio/Не_могу.mp3",
+    "audio/Nobody_Can_Hear_You.mp3"
 ];
 
 // Конфигурация Telegram бота
