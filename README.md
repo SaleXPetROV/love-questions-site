@@ -8,7 +8,7 @@
 - Telegram Bot Token (получить у [@BotFather](https://t.me/BotFather))
 - Telegram Chat ID (можно получить через [@userinfobot](https://t.me/userinfobot))
 
-### Установка и Локальный запуск
+### Установка и Локальный запуск сайта
 
 1. Клонируйте репозиторий:
 ```bash
@@ -50,7 +50,7 @@ npm install node-telegram-bot-api dotenv
 node bot/bot.js
 ```
 
-## Запуск на сервере
+## Запуск сайта на сервере
 
 ### Вариант 1: Простой хостинг (например, GitHub Pages)
 
