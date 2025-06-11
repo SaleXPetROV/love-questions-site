@@ -109,6 +109,31 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
+### Запуск Telegram бота на сервере (для постоянной работы)
+
+После выполнения шагов 1-3 из раздела "Вариант 2: Полноценный сервер (например, VPS)" и настройки файла `.env` на сервере:
+
+1. Установите `pm2` (менеджер процессов Node.js):
+```bash
+sudo npm install -g pm2
+```
+
+2. Установите зависимости для бота:
+```bash
+npm install node-telegram-bot-api dotenv
+```
+
+3. Запустите бота с помощью `pm2`:
+```bash
+pm2 start bot/bot.js --name "love-questions-bot"
+```
+
+4. Сохраните текущие процессы `pm2` для автозапуска после перезагрузки сервера:
+```bash
+pm2 save
+pm2 startup systemd # Или другая система инициализации, например, sysvinit, upstart
+```
+
 ## Настройка Telegram бота
 
 1. Создайте нового бота через [@BotFather](https://t.me/BotFather)
