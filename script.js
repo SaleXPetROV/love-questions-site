@@ -50,8 +50,8 @@ const playlist = [
 ];
 
 // Конфигурация Telegram бота
-const TELEGRAM_BOT_TOKEN = '7430735534:AAEPh3D-JwKDnNpxRtaHobNI_YJ1_1q5JWw';
-const TELEGRAM_CHAT_ID = '6661676176'; // ID пользователя, которому будут отправляться сообщения
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 let currentQuestionIndex = 0;
 let currentSongIndex = 0; // Индекс текущей песни в плейлисте

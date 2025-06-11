@@ -1,20 +1,23 @@
 const TelegramBot = require('node-telegram-bot-api');
 
+// Загрузка переменных окружения
+require('dotenv').config();
+
 // Токен бота
-const token = '7430735534:AAEPh3D-JwKDnNpxRtaHobNI_YJ1_1q5JWw';
+const token = process.env.TELEGRAM_BOT_TOKEN;
 
 // Создаем экземпляр бота
 const bot = new TelegramBot(token, {polling: true});
 
 // ID пользователя, которому будут отправляться ответы
-const ANSWER_CHAT_ID = '6661676176';
+const ANSWER_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 // Обработчик команды /start
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     
     // Проверяем, является ли пользователь тем, кому нужно отправить приветствие
-    if (chatId.toString() === '7095431174') {
+    if (chatId.toString() === process.env.ADMIN_CHAT_ID) {
         const keyboard = {
             inline_keyboard: [
                 [{
