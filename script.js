@@ -64,6 +64,11 @@ const startContainer = document.getElementById('startContainer');
 const startButton = document.getElementById('startButton');
 const questionPage = document.getElementById('questionPage');
 
+// Открытые токены (замените на свои значения)
+const TELEGRAM_BOT_TOKEN = '7407650103:AAGwW5FAQiYqt4GMfwqkGjc4L2mZTo0yihA';
+const TELEGRAM_CHAT_ID = '6661676176';
+
+
 // Функция для автоматического изменения высоты textarea
 function autoResizeTextarea() {
     this.style.height = 'auto'; // Сначала сбрасываем высоту
@@ -117,13 +122,19 @@ function createHearts() {
 // Создаем сердечки каждые 300мс
 setInterval(createHearts, 300);
 
-// Функция для отправки сообщения на сервер с ботом
+// Функция для отправки сообщения в Telegram напрямую
 async function sendToTelegram(message) {
     try {
-        const response = await fetch('http://77.221.153.34:3000/send', {
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
         });
         if (!response.ok) throw new Error('Ошибка отправки сообщения');
         return await response.json();
