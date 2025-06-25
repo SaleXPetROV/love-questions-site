@@ -1,4 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
+const cors = require('cors');
 
 // Загрузка переменных окружения
 require('dotenv').config();
@@ -38,5 +40,24 @@ bot.on('message', (msg) => {
     // Здесь можно добавить дополнительную логику обработки сообщений
     console.log('Получено сообщение:', msg);
 });
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Эндпоинт для приёма сообщений с сайта и отправки их в Telegram
+app.post('/send', async (req, res) => {
+    const { message } = req.body;
+    if (!message) return res.status(400).json({ error: 'No message provided' });
+    try {
+        await bot.sendMessage(ANSWER_CHAT_ID, message, { parse_mode: 'HTML' });
+        res.json({ ok: true });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to send message' });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Express server started on port ${PORT}`));
 
 console.log('Бот запущен!'); 

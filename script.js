@@ -49,10 +49,6 @@ const playlist = [
     "audio/Nobody_Can_Hear_You.mp3"
 ];
 
-// Конфигурация Telegram бота
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
 let currentQuestionIndex = 0;
 let currentSongIndex = 0; // Индекс текущей песни в плейлисте
 
@@ -121,25 +117,15 @@ function createHearts() {
 // Создаем сердечки каждые 300мс
 setInterval(createHearts, 300);
 
-// Функция для отправки сообщения в Telegram
+// Функция для отправки сообщения на сервер с ботом
 async function sendToTelegram(message) {
     try {
-        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        const response = await fetch('http://77.221.153.34:3000/send', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-                parse_mode: 'HTML'
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
         });
-        
-        if (!response.ok) {
-            throw new Error('Ошибка отправки сообщения');
-        }
-        
+        if (!response.ok) throw new Error('Ошибка отправки сообщения');
         return await response.json();
     } catch (error) {
         console.error('Ошибка:', error);
