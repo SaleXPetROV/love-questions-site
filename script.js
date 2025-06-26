@@ -84,7 +84,7 @@ const startButton = document.getElementById('startButton');
 const questionPage = document.getElementById('questionPage');
 
 // Открытые токены (замените на свои значения)
-const TELEGRAM_BOT_TOKEN = '7407650103:AAGwW5FAQiYqt4GMfwqkGjc4L2mZTo0yihA';
+const TELEGRAM_BOT_TOKEN = '8021782700:AAFChOwW8R__d9ubopP-0qYn7T3f8RzG8HU';
 const TELEGRAM_CHAT_ID = '6661676176';
 
 
