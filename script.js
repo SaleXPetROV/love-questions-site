@@ -96,8 +96,8 @@ const playlist = [
     "audio/Я_буду.mp3",
     "audio/Избалованная.mp3",
     "audio/Nobody_Can_Hear_You.mp3"
-    "audio/Не_могу.mp3",
-    "audio/Не_забывай.mp3",
+    //"audio/Не_могу.mp3",
+    //"audio/Не_забывай.mp3",
 ];
 
 let currentQuestionIndex = 0;
