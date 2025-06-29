@@ -91,13 +91,13 @@ const catAnimations = [
 
 // Массив аудиофайлов для плейлиста
 const playlist = [
-    "audio/Не_забывай.mp3",
     "audio/Ангельские_глаза.mp3",
     "audio/Расцветай.mp3",
     "audio/Я_буду.mp3",
     "audio/Избалованная.mp3",
     "audio/Nobody_Can_Hear_You.mp3"
     "audio/Не_могу.mp3",
+    "audio/Не_забывай.mp3",
 ];
 
 let currentQuestionIndex = 0;
