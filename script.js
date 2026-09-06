@@ -114,8 +114,8 @@ const startButton = document.getElementById('startButton');
 const questionPage = document.getElementById('questionPage');
 
 // Открытые токены (замените на свои значения)
-const TELEGRAM_BOT_TOKEN = '7872178664:AAGDCRDkL_anfY0maeKLDwUaa-3gC5JLkUc';
-const TELEGRAM_CHAT_ID = '6661676176';
+const TELEGRAM_BOT_TOKEN = '7777325203:AAGIUVLnQPM5QovyR-N9lBxtPBbCNiw63jI';
+const TELEGRAM_CHAT_ID = '7564533125';
 
 
 // Функция для автоматического изменения высоты textarea
