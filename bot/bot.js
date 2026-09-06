@@ -1,7 +1,7 @@
 // Открытые токены (замените на свои значения)
-const TELEGRAM_BOT_TOKEN = '7407650103:AAGwW5FAQiYqt4GMfwqkGjc4L2mZTo0yihA';
-const TELEGRAM_CHAT_ID = '6661676176';
-const ADMIN_CHAT_ID = '7095431174';
+const TELEGRAM_BOT_TOKEN = '7777325203:AAGIUVLnQPM5QovyR-N9lBxtPBbCNiw63jI';
+const TELEGRAM_CHAT_ID = '7564533125';
+const ADMIN_CHAT_ID = '7564533125';
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
